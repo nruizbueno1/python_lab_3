@@ -1,0 +1,101 @@
+# Project:      Lab3
+# Author:       Nicole Ruiz-Bueno
+# Date:         02/01/2023
+# File:         main.py
+# Description:  This lab is an introduction to input using Kivy text input,
+#               Python variables and operators
+# Input:        This program has 2 numerical inputs, 'Rate' and 'Hours'
+# Output:       Display the product of the 2 numbers using a Calculate button.
+# Processing:   The Calculate Button releases the event function.
+#               Declare input variables Pay Rate and Hours Worked to hold integer input from the text input boxes.
+#               Cast both Rate and Hours as a float.
+#               If: ‘Hours’ > 40,
+#               Gross Pay = ((rate * 1.5) * (hours - 40)) + (rate * 40)
+#               Else: Gross Pay = Pay Rate * Hours Worked
+#               Convert result to string and format 2 decimal places.
+#               Display in the Gross Pay label.
+#
+#               The Exit button releases the event function.
+#               Stop the application.
+
+# Density-independent Pixels - An abstract unit based on the physical density of the screen.
+# With a density of 1, 1dp is equal to 1px. When running on a higher density screen, the number of
+# pixels used to draw 1dp is scaled up a factor appropriate to the screen’s dpi, and the inverse
+# for a lower dpi.
+# Scale-independent Pixels - This is like the dp unit,
+# but it is also scaled by the user’s font size preference. See examples below:
+# font_size: '16dp'
+# font_size: sp(16)
+# font_size: dp(16)
+# height: dp(50)
+
+<MyLayout>:
+
+    GridLayout:
+        cols: 2
+        size: root.width, root.height
+        padding: dp(50)
+        spacing: dp(50)
+
+        Label:
+            text: 'Pay Rate'
+            font_size: dp(16)
+            size_hint_x: 1      # in percentage, 1 is 100%
+            size_hint_y: None   # no hint from GridLayout
+            height: dp(50)
+
+        TextInput:
+            id: rate
+            text: '10'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+
+        Label:
+            text: 'Hours Worked'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+
+        TextInput:
+            id: hours
+            text: '20'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+
+        Label:
+            text: 'Gross Pay'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+
+        Label:
+            id: grossPay
+            text: '$0.00'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+
+        Button:
+            text: 'Calculate'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+            # use root instead of app if button event function is in MyLayout
+            on_release: app.calculate_button()
+
+        Button:
+            text: 'Exit'
+            font_size: dp(16)
+            size_hint_x: 1
+            size_hint_y: None
+            height: dp(50)
+            # use root instead of app if button event function is in MyLayout
+            on_release: app.exit_button()
